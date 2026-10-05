@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+            background-color: #f8fafc;
+        }
+        .info-box {
+            background-color: #e2e2e2;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333333;
+            text-decoration: none;
+            margin-top: 20px;
+            width: 220px;
+        }
+        .info-box:hover {
+            background-color: #d1d1d1;
+        }
+        img {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .logout-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #ef4444;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World! Welcome to my website.</h1>
+    <p>Hi I love coding and it's me Oakkar</p>
+    
+    <!-- ပုံ (`hand.png`) -->
+    <div>
+        <img src="hand.png" alt="Waving Hand" width="200">
+    </div>
+
+    <!-- Oakkar's Information ခလုတ် -->
+    <div>
+        <a href="#" class="info-box" onclick="checkLogin(event)">Oakkar's Information</a>
+    </div>
+   
+    <div>
+        <a href="#" class="info-box" onclick="checkLogin(event)">Login</a>
+    </div>
+
+    <!-- Logout လုပ်ရန် ခလုတ် (စမ်းသပ်ရန်) -->
+    <div>
+        <a href="#" class="logout-btn" onclick="logout()">Log Out</a>
+    </div>
+
+    <!-- JavaScript ကုဒ်များ -->
+    <script>
+        function checkLogin(event) {
+            event.preventDefault();
+            
+            // sessionStorage တွင် Login ဝင်ထားကြောင်း ရှိမရှိ စစ်ဆေးသည်
+            let isLogined = sessionStorage.getItem("isLoggedIn");
+            
+            if (isLogined === "true") {
+                // Login ဝင်ပြီးသားဖြစ်ပါက about.html သို့ တန်းသွားမည် (ထပ်မမေးတော့ပါ)
+                window.location.href = "about.html";
+            } else {
+                // မဝင်ရသေးပါက Login လိုကြောင်း မေးမည်
+                let askLogin = confirm("Login Required! Do you want to sign in first?");
+                if (askLogin) {
+                    window.location.href = "login.html";
+                } else {
+                    alert("You must login to view Oakkar's Information.");
+                }
+            }
+        }
+
+        function logout() {
+            // Logout လုပ်ပါက sessionStorage ကို ရှင်းထုတ်မည်
+            sessionStorage.removeItem("isLoggedIn");
+            alert("Logged out successfully!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>

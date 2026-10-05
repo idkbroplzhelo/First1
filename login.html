@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In - Oakkar's Website</title>
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: #ffffff;
+            width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        h2 {
+            color: #2563eb;
+            font-size: 28px;
+            margin-bottom: 8px;
+            margin-top: 0;
+        }
+        .subtitle {
+            color: #4b5563;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+        .input-box {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: #f9fafb;
+        }
+        .sign-in-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #0000ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Sign In</h2>
+        <div class="subtitle">Please enter login information</div>
+        
+        <form onsubmit="return validateLogin(event)">
+            <input type="text" id="username" class="input-box" placeholder="Please enter username">
+            <input type="password" id="password" class="input-box" placeholder="Please enter a password">
+            <button type="submit" class="sign-in-btn">SIGN IN</button>
+        </form>
+    </div>
+
+    <script>
+        // အကယ်၍ Login ဝင်ပြီးသားဖြစ်နေရင် login စာမျက်နှာကို ကျော်ပြီး index.html ဆီ တန်းသွားမည်
+        if (sessionStorage.getItem("isLoggedIn") === "true") {
+            window.location.href = "index.html";
+        }
+
+        function validateLogin(event) {
+            event.preventDefault();
+            let user = document.getElementById("username").value;
+            let pass = document.getElementById("password").value;
+
+            if (user === "oakkarminkhant650@gmail.com" && pass === "123") {
+                // Login ဝင်အောင်မြင်ကြောင်း မှတ်သားထားမည်
+                sessionStorage.setItem("isLoggedIn", "true");
+                window.location.href = "index.html";
+            } else {
+                alert("Incorrect Username or Password!");
+            }
+        }
+    </script>
+
+</body>
+</html>
